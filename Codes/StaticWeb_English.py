@@ -24,7 +24,7 @@ def get_movie(headers):
         # 1.link 和 headers
         link = link_base + str(i * 25)
         r = requests.post(link, headers=headers, timeout=10)
-        print(str(i + 1), "页响应状态码:", r.status_code)
+        # print(str(i + 1), "页响应状态码:", r.status_code)
 
         # 2.获取soup对象并解析
         soup = BeautifulSoup(r.text, "lxml")
