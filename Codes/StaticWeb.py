@@ -1,5 +1,5 @@
 """
-练习 : 使用Python爬虫访问静态页面获取
+练习 : 使用Python爬虫访问静态页面获取中文
 
 """
 import requests
