@@ -1,1 +1,2 @@
-# dev
+# 输出Hello World
+print('Hello World！')
