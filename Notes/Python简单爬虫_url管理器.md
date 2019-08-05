@@ -32,5 +32,5 @@ response3 = urllib.request.urlopen(url)
 
 print(response3.getcode())
 print(len(response3.read()))
-print(cj)
+print(cj)  
 ```
