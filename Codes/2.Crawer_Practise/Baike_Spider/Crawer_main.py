@@ -41,7 +41,7 @@ class SpiderMain(object):
                 new_url = self.urls.get_new_url()
                 print('craw %d: %s' %(count, new_url))
                 html_content = self.downloader.download(new_url)
-                new_urls, new_data = self.parser.parse('https://baike.baidu.com', html_content)
+                new_urls, new_data = self.parser.parse(new_url, html_content)
                 self.urls.add_new_urls(new_urls)
                 self.outputer.collect_data(new_data)
                 self.outputer.oouput_html()
@@ -51,6 +51,7 @@ class SpiderMain(object):
                 count = count+1
             except:
                 print('craw error')
+        print("ok")
 
 if __name__ == "__main__":
     root_url = "https://baike.baidu.com/item/Python/407313"
