@@ -34,6 +34,9 @@ class SpiderMain(object):
         3.通过 html_content 提取出的 new_urls, new_data
         4.添加 new_urls, 处理new_data
         """
+
+
+
         count = 1
         self.urls.add_new_url(root_url)
         while self.urls.has_new_url():
@@ -54,6 +57,6 @@ class SpiderMain(object):
         print("ok")
 
 if __name__ == "__main__":
-    root_url = "https://baike.baidu.com/item/Python/407313"
+    root_url = "https://baike.baidu.com/item/%E6%9D%8E%E5%B0%8F%E9%BE%99/32914?fr=aladdin"
     obj_spider = SpiderMain()
     obj_spider.craw(root_url)
