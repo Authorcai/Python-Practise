@@ -25,8 +25,7 @@
     <show-object-properties value="false" />
     <loaded-nodes>
       <connection connection-id="2fb126cf-bc09-4274-93a5-f890789675a4">
-        <schema name="information_schema" object-types="view, function, procedure, table" />
-        <schema name="mysql" object-types="view, function, procedure, table" />
+        <schema name="python_spider" object-types="index, view, function, procedure, table, column, constraint, dataset trigger" />
       </connection>
     </loaded-nodes>
   </component>
@@ -40,6 +39,14 @@
   </component>
   <component name="DBNavigator.Project.DatabaseSessionManager">
     <connection id="2fb126cf-bc09-4274-93a5-f890789675a4" />
+  </component>
+  <component name="DBNavigator.Project.DatasetFilterManager">
+    <filter-actions connection-id="2fb126cf-bc09-4274-93a5-f890789675a4" dataset="python_spider.Train" active-filter-id="01995f4d-8f00-44a7-806e-41432a0f0537">
+      <filter id="01995f4d-8f00-44a7-806e-41432a0f0537" name="Filter 1" temporary="false" custom-name="false" type="basic" join-type="AND">
+        <condition column="train_num" operator="=" value="" active="true" />
+      </filter>
+    </filter-actions>
+    <filter-actions connection-id="2fb126cf-bc09-4274-93a5-f890789675a4" dataset="python_spider.Person" active-filter-id="" />
   </component>
   <component name="DBNavigator.Project.EditorStateManager">
     <last-used-providers />

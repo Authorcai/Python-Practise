@@ -10,4 +10,26 @@
 '''
 
 # import lib
- 
+import pymysql
+
+# 连接数据库
+db = pymysql.connect(
+    'localhost',
+    'root',
+    '$Cai1998220$',
+    'python_spider'
+)
+cursor = db.cursor()
+
+# 数据库获取数据
+cursor.execute(
+    "select *\
+    from Person "
+)
+
+# 对数据进行处理
+data = cursor.fetchone()
+print(str(data))
+
+# 关闭数据库
+db.close()
