@@ -2,7 +2,7 @@
 <project version="4">
   <component name="DBNavigator.Project.DataEditorManager">
     <record-view-column-sorting-type value="BY_INDEX" />
-    <value-preview-text-wrapping value="true" />
+    <value-preview-text-wrapping value="false" />
     <value-preview-pinned value="false" />
   </component>
   <component name="DBNavigator.Project.DataExportManager">
@@ -23,14 +23,10 @@
     <autoscroll-to-editor value="false" />
     <autoscroll-from-editor value="true" />
     <show-object-properties value="false" />
-    <loaded-nodes>
-      <connection connection-id="2fb126cf-bc09-4274-93a5-f890789675a4">
-        <schema name="python_spider" object-types="index, view, function, procedure, table, column, constraint, dataset trigger" />
-      </connection>
-    </loaded-nodes>
+    <loaded-nodes />
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
-    <connection id="2fb126cf-bc09-4274-93a5-f890789675a4">
+    <connection id="9fcf23d4-6e38-4a2a-b8d6-c523e7f1d145">
       <console name="Spider" type="STANDARD" schema="mysql" session="Main" />
     </connection>
   </component>
@@ -38,15 +34,7 @@
     <open-files />
   </component>
   <component name="DBNavigator.Project.DatabaseSessionManager">
-    <connection id="2fb126cf-bc09-4274-93a5-f890789675a4" />
-  </component>
-  <component name="DBNavigator.Project.DatasetFilterManager">
-    <filter-actions connection-id="2fb126cf-bc09-4274-93a5-f890789675a4" dataset="python_spider.Train" active-filter-id="01995f4d-8f00-44a7-806e-41432a0f0537">
-      <filter id="01995f4d-8f00-44a7-806e-41432a0f0537" name="Filter 1" temporary="false" custom-name="false" type="basic" join-type="AND">
-        <condition column="train_num" operator="=" value="" active="true" />
-      </filter>
-    </filter-actions>
-    <filter-actions connection-id="2fb126cf-bc09-4274-93a5-f890789675a4" dataset="python_spider.Person" active-filter-id="" />
+    <connection id="9fcf23d4-6e38-4a2a-b8d6-c523e7f1d145" />
   </component>
   <component name="DBNavigator.Project.EditorStateManager">
     <last-used-providers />
@@ -71,7 +59,7 @@
   </component>
   <component name="DBNavigator.Project.Settings">
     <connections>
-      <connection id="2fb126cf-bc09-4274-93a5-f890789675a4" active="true">
+      <connection id="9fcf23d4-6e38-4a2a-b8d6-c523e7f1d145" active="true">
         <database>
           <name value="Spider" />
           <description value="" />
@@ -87,7 +75,7 @@
           <database value="mysql" />
           <type value="USER_PASSWORD" />
           <user value="root" />
-          <deprecated-pwd value="JENhaTE5OTgyMjAk" />
+          <deprecated-pwd value="Q2FpMTk5ODIyMA==" />
         </database>
         <properties>
           <auto-commit value="false" />

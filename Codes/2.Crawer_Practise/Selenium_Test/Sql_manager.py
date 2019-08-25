@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- encoding: utf-8 -*-
 '''
-@File    :   MysqlConsole.py    
+@File    :   Sql_manager.py
 @Contact :   icsh98@163.com
 
 @Modify Time      @Author    @Version    @Desciption
@@ -29,7 +29,7 @@ class MySql(object):
     def __init__(self):
         self.addr = "localhost"
         self.user = "root"
-        self.pwd  = "$Cai1998220$"
+        self.pwd  = "Cai1998220"
         self.db_name = "python_spider"
         self.tb_name = "Train"
 
@@ -54,4 +54,3 @@ class MySql(object):
             db.commit()
         except:
             print("出现错误")
-

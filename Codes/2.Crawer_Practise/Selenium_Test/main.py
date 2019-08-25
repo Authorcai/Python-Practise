@@ -12,8 +12,7 @@
 # 导入工具
 import time
 
-import MysqlConsole
-import random
+import Sql_manager
 
 # 使用selenium自动化测试工具
 import selenium.webdriver
@@ -25,8 +24,7 @@ from selenium.webdriver.support import expected_conditions as Expect
 
 class Crawer():
     def __init__(self):
-        self.mysql = MysqlConsole.MySql()
-
+        self.mysql = Sql_manager.MySql()
     def craw(self,link):
         """
         1.使用chrome的自动化测试工具
@@ -39,7 +37,7 @@ class Crawer():
             var fromStation = document.getElementById('fromStation');
             var toStation = document.getElementById('toStation');
             var btn = document.getElementById('query_ticket');
-            var date = 
+            var date =
             fromStation.value='SHH'
             toStation.value='TJP'
             btn.click()
@@ -99,4 +97,3 @@ if __name__ == "__main__":
         link = 'https://kyfw.12306.cn/otn/leftTicket/init?linktypeid=dc&fs=%E4%B8%8A%E6%B5%B7,SHH&ts=%E5%A4%A9%E6%B4%A5,TJP&date=2019-09-'+str("{:0>2d}".format(i+5))+'&flag=Y,N,Y'
         # print(link)
         c.craw(link)
-        time.sleep(5)
