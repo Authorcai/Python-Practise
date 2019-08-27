@@ -10,6 +10,7 @@
 '''
 
 # import lib
+import time
 import scrapy
 import selenium.webdriver
 from Ticket_12306.items import Ticket12306Item
@@ -24,9 +25,21 @@ class main_Spider(scrapy.spiders.Spider):
     # 1.name
     name = "ticket"
     # 2.start_urls
+    base_url_1 = "https://kyfw.12306.cn/otn/leftTicket/init?linktypeid=dc&fs=%E4%B8%8A%E6%B5%B7,SHH&ts=%E5%A4%A9%E6%B4%A5,TJP&date=2019-09-"
+    base_url_2 = "&flag=N,N,Y"
+    page = 1
+    base_url_page = str("{:0>2d}".format(page))
     start_urls = [
-        "https://kyfw.12306.cn/otn/leftTicket/init?linktypeid=dc&fs=%E4%B8%8A%E6%B5%B7,SHH&ts=%E5%A4%A9%E6%B4%A5,TJP&date=2019-09-04&flag=N,N,Y"
+        base_url_1+base_url_page+base_url_2
     ]
+    # start_urls = [
+    #     "https://kyfw.12306.cn/otn/leftTicket/init?linktypeid=dc&fs=%E4%B8%8A%E6%B5%B7,SHH&ts=%E5%A4%A9%E6%B4%A5,TJP&date=2019-09-01&flag=N,N,Y",
+    #     "https://kyfw.12306.cn/otn/leftTicket/init?linktypeid=dc&fs=%E4%B8%8A%E6%B5%B7,SHH&ts=%E5%A4%A9%E6%B4%A5,TJP&date=2019-09-02&flag=N,N,Y",
+    #     "https://kyfw.12306.cn/otn/leftTicket/init?linktypeid=dc&fs=%E4%B8%8A%E6%B5%B7,SHH&ts=%E5%A4%A9%E6%B4%A5,TJP&date=2019-09-03&flag=N,N,Y",
+    #     "https://kyfw.12306.cn/otn/leftTicket/init?linktypeid=dc&fs=%E4%B8%8A%E6%B5%B7,SHH&ts=%E5%A4%A9%E6%B4%A5,TJP&date=2019-09-04&flag=N,N,Y",
+    #     "https://kyfw.12306.cn/otn/leftTicket/init?linktypeid=dc&fs=%E4%B8%8A%E6%B5%B7,SHH&ts=%E5%A4%A9%E6%B4%A5,TJP&date=2019-09-05&flag=N,N,Y",
+    #     "https://kyfw.12306.cn/otn/leftTicket/init?linktypeid=dc&fs=%E4%B8%8A%E6%B5%B7,SHH&ts=%E5%A4%A9%E6%B4%A5,TJP&date=2019-09-06&flag=N,N,Y"
+    # ]
     # 使用selenium进行初始化
     def __init__(self):
         self.browser = selenium.webdriver.Chrome()
@@ -35,8 +48,9 @@ class main_Spider(scrapy.spiders.Spider):
     def parse(self,response):
         # 获取url
         self.browser.get(response.url)
+        x = response.url
         Wait(self.browser, 100).until(
-            Expect.presence_of_element_located((By.XPATH, "//div[@id='sear-result']"))
+            Expect.presence_of_element_located((By.XPATH, '//tr[starts-with(@id,"ticket_")][34    ]'))
         )
         # 取得日期
         date = self.browser.find_element_by_xpath('//li[@class="sel"]/span[2]')
@@ -66,4 +80,7 @@ class main_Spider(scrapy.spiders.Spider):
             item['train_seats_9'] = train.find_element_by_xpath('. //td[10]').text
             item['train_seats_10'] = train.find_element_by_xpath('. //td[11]').text
             item['train_seats_11'] = train.find_element_by_xpath('. //td[12]').text
+
+            # 返回item的迭代器
             yield item
+
