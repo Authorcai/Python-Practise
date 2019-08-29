@@ -2,10 +2,41 @@
 
 #### 基本流程
 
-#### 组成结构
+##### 新建项目  
+* 打开需要建立项目的目录,执行以下命令
+```shell script
+scray startproject 项目名
+```
+* 得到项目的文件结构,其中各个文件及文件夹的含义为:
+    1. spiders/ : 存放爬虫文件的目录
+    2. items.py : 用于设置爬虫得到的数据结构
+    3. piplines.py : 用于设置对数据处理
+    3. middlewares.py : 中间件
+    3. settings.py : 项目的设置文件
+    4. scrapy.cfg : 为项目的配置文件 
 
-#### 代码注意事项
+#### 代码编写
+* spiders/  
+    1. name
+    2. starts_urls
+    3. def parse()
+    4. def __init__()
+    
+* items.py 
+    1. 声明或定义各个字段或变量
+    
+* piplines.py:注意在该文件中定义的函数是顺序执行的
+    1. def __init__() : 初始化存储的文件属性,例如数据库的声明和连接
+    2. def process_item() : 对返回的item文件的处理函数
+    3. def process_close() : 在函数存储完成后的操作函数
+* middlewares.py : 中间件
+* settings.py : 项目的设置文件
+    1. 设置函数名
+    2. 设置函数的piplines相关属性
+* scrapy.cfg : 为项目的配置文件 
 
 #### 和Requests的区别
 
 #### Scrapy处理动态页面
+
+* 配合selenium,在parse() 中调用selenium的方法和设置即可,通过response.url获取路径

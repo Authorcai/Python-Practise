@@ -53,5 +53,5 @@
 
 1.进入`Pycharm` -> `preference` -> `Python Interpreter` -> `show all` -> `+` ->`existing environment`
 选择自己之前配置好的虚拟环境  
-2自己也可以通过PyCharm对虚拟环境进行配置
-
+2. 自己也可以通过PyCharm对虚拟环境进行配置
+3. 在工程插件选项中修改sys.path
