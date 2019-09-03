@@ -21,7 +21,8 @@ scray startproject 项目名
     2. starts_urls
     3. def parse()
     4. def __init__()
-    
+    注意在parse()函数中可以通过使用reqeust()调用其他的函数,尤其注意可以设置其中的meta值实现和其他函数之间的参数传递,meta为字典类型
+    举例: 使用使用参数设置访问起点小说网,爬取网站的小说名称, 小说简介和章节目录
 * items.py 
     1. 声明或定义各个字段或变量
     
