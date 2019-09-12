@@ -207,5 +207,80 @@ print ('\n')
 print ('对换数组：')
 print (np.transpose(a))
 ```
-.....等等其他函数
+.....等等其他函数 
 
+##### Numpy 位运算
+Numpy 的位运算使用的是numpy.bitwise来开头的函数
+分别为:
+    bitwise_and: 对数组元素执行位与操作
+    bitwise_or:	对数组元素执行位或操作
+    invert:	按位取反
+    left_shift:	向左移动二进制表示的位(())
+    right_shift: 向右移动二进制表示的位
+    
+##### Numpy字符串函数
+注意: 在numpy.char.*中定义,举例说明:  
+    add()	        对两个数组的逐个字符串元素进行连接
+    multiply()	    返回按元素多重连接后的字符串
+    
+    center()	    居中字符串
+    capitalize()	将字符串第一个字母转换为大写
+    title()	        将字符串的每个单词的第一个字母转换为大写
+    lower()	        数组元素转换为小写
+    upper()	        数组元素转换为大写
+    
+    split()	        指定分隔符对字符串进行分割，并返回数组列表
+    splitlines()	返回元素中的行列表，以换行符分割
+    strip()	        移除元素开头或者结尾处的特定字符
+    
+    join()	        通过指定分隔符来连接数组中的元素
+    replace()	    使用新字符串替换字符串中的所有子字符串
+    
+    decode()	    数组元素依次调用str.decode
+    encode()	    数组元素依次调用str.encode
+
+##### Numpy数学函数 : 三角函数 算数运算函数 复数处理函数  
+* 三角函数: 
+    np.sin() np.cos() np.tan()  
+    np.arcsin() np.arccos() np.arctan()
+    
+* 算数运算函数: 
+    舍入函数: numpy.around()
+    下舍函数: numpy.floor()
+    上入函数: numpy.ceil()
+    加: numpy.add()
+    减: numpy.subtract()
+    乘: numpy.multiply()
+    除: numpy.divide()
+    求倒数: numpy.reciprocal()
+    幂函数: numpy.power()
+    取余: numpy.mod()
+
+* 统计函数: 一般用于统计本函数
+    求最大值: numpy.amin(a) , 可指定axis
+    求最小值: numpy.amax(a) , 可指定axis
+    求最大值和最小值的差: 
+    求小于某个值的观察值的百分比: numpy.percentile(a, q, axis)
+    计算的中位数: numpy.median(), 可指定轴
+    求平均值(加权平均值): numpy.average() 
+    求标准差和方差: ...
+    
+##### NumPy 排序、条件刷选函数: 快速排序 归并排序 堆排序
+    相关说明: numpy.sort(a, axis, kind, order)
+    a: 要排序的数组
+    axis: 沿着它排序数组的轴，如果没有数组会被展开，沿着最后的轴排序， axis=0 按列排序，axis=1 按行排序
+    kind: 默认为'quicksort'（快速排序）
+    order: 如果数组包含字段，则是要排序的字段
+    
+##### Numpy字节交换  
+
+##### Numpy 副本和视图
+
+* 副本: 为数组的拷贝结果,对副本的修改不影响原数组的内容;
+    1. Python 序列的切片操作，调用deepCopy()函数。
+    2. 调用 ndarray 的 copy() 函数产生一个副本。
+* 视图: 为数组的引用,对视图的修改将会影响原数组的内容;
+    1. numpy 的切片操作返回原数据的视图。
+    2. 调用 ndarray 的 view() 函数产生一个视图。
+
+    
