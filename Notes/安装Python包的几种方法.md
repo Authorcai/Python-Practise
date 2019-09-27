@@ -20,9 +20,10 @@ pip install 包名 -i 镜像地址1 --trusted-host 镜像地址2
 _使用pypi安装的格式_  
 ```shell script
 # 需要使用setup.py,故需要进入setup.py的目录下，或者配置环境变量
+# 类似于win下的安装引导
 python setup.py install 包名
 ```
 
 ##### 通过源码安装
 
-_下载源码文件并安装，常见格式为msi、exe、tar.gz（由于系统不同格式不同_
+_下载源码文件并安装，常见格式为msi、exe、tar.gz（由于系统不同格式不同_)
