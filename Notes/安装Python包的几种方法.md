@@ -1,5 +1,6 @@
 #### 安装Python包的几种方法总结(需要使用termial工具\git工具)
 
+##### 包管理方法原理
 ![Python包管理说明](https://img-blog.csdnimg.cn/20190710142826527.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTMwOTUzMzM=,size_16,color_FFFFFF,t_70)
 
 ##### 通过pip安装（首选）
@@ -24,4 +25,4 @@ python setup.py install 包名
 
 ##### 通过源码安装
 
-_下载源码文件并安装，常见格式为msi、exe、tar.gz（由于系统不同格式不同）
+_下载源码文件并安装，常见格式为msi、exe、tar.gz（由于系统不同格式不同_
