@@ -27,3 +27,9 @@ python setup.py install 包名
 ##### 通过源码安装
 
 _下载源码文件并安装，常见格式为msi、exe、tar.gz（由于系统不同格式不同_)
+
+##### 若使用的是python的发行版，以anaconda为例
+安装格式为： 
+```shell script
+conda install <包名>
+```
