@@ -1,0 +1,28 @@
+#### Basemap
+
+* 理解
+  basemap是matplotlib库的一个插件，其已在github上开源并提供下载，详见https://github.com/matplotlib/basemap  
+  利用该插件可以较好地绘制地理图形
+  
+* 安装
+  1. 在安装过程中，使用pip install basemap，终端将会报错，并提示无法获得对应版本的basemap；  
+  
+  2. 在安装过程中，使用源码安装的方法也弹出此错误提示，经过多方尝试吗，最终以失败告终
+  
+  3. 在安装过程汇总，使用anaconda的方法安装：
+  macos: 
+    terminal 中输入 brew install ananconda
+    在pycharm或其他开发工具中配置ananconda，此处不赘述；
+    本机上新建了Dataes环境并配置了basemap：
+      conda activate Dataes
+      conda install python
+      conda insatall pip
+      conda instal basemap
+    完成对插件的安装
+  win: 详见官网
+  PS: ananconda为Python的发行版本，其可以代替Python并拥有强大的环境管理和包管理功能（conda）
+  
+* 使用该插件
+  输入格式：from mpl_toolkits.basemap import Basemap,但是会弹出错误，提示找不到PROJ_LIB这个环境变量，其中该环境变量路径为：  
+  <anaconda安装路径>/envs/Dataes/share/proj，设置环境白能量后重启系统即可
+  
