@@ -24,7 +24,10 @@
     
 * 相关操作
     转置
-    修改DataFrame的相关属性: 修改index: obj.index.name, obj.columns.name
+    修改DataFrame的相关属性: 修改index和列: obj.index.name, obj.columns.name
     转换为narray
-    索引: 通过对
+    索引: 包括排序
+    选取一行或一组行
+    选组一列或一组列
+    
 
