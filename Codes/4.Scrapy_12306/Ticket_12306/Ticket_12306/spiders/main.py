@@ -13,7 +13,7 @@
 import time
 import scrapy
 import selenium.webdriver
-from Ticket_12306.items import Ticket12306Item
+from items import Ticket12306Item
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait as Wait
 from selenium.webdriver.support import expected_conditions as Expect
@@ -25,21 +25,21 @@ class main_Spider(scrapy.spiders.Spider):
     # 1.name
     name = "ticket"
     # 2.start_urls
-    base_url_1 = "https://kyfw.12306.cn/otn/leftTicket/init?linktypeid=dc&fs=%E4%B8%8A%E6%B5%B7,SHH&ts=%E5%A4%A9%E6%B4%A5,TJP&date=2019-09-"
+    '''base_url_1 = "https://kyfw.12306.cn/otn/leftTicket/init?linktypeid=dc&fs=%E4%B8%8A%E6%B5%B7,SHH&ts=%E5%A4%A9%E6%B4%A5,TJP&date=2019-11-"
     base_url_2 = "&flag=N,N,Y"
     page = 4
     base_url_page = str("{:0>2d}".format(page))
     start_urls = [
         base_url_1+base_url_page+base_url_2
+    ]'''
+    start_urls = [
+        "https://kyfw.12306.cn/otn/leftTicket/init?linktypeid=dc&fs=%E4%B8%8A%E6%B5%B7,SHH&ts=%E5%8c%97%E4%BA%AC,TJP&date=2019-11-04&flag=N,N,Y",
+        "https://kyfw.12306.cn/otn/leftTicket/init?linktypeid=dc&fs=%E4%B8%8A%E6%B5%B7,SHH&ts=%E5%8c%97%E4%BA%AC,TJP&date=2019-11-05&flag=N,N,Y",
+        "https://kyfw.12306.cn/otn/leftTicket/init?linktypeid=dc&fs=%E4%B8%8A%E6%B5%B7,SHH&ts=%E5%8c%97%E4%BA%AC,TJP&date=2019-11-06&flag=N,N,Y",
+        "https://kyfw.12306.cn/otn/leftTicket/init?linktypeid=dc&fs=%E4%B8%8A%E6%B5%B7,SHH&ts=%E5%A4%A9%E6%B4%A5,TJP&date=2019-11-07&flag=N,N,Y",
+        "https://kyfw.12306.cn/otn/leftTicket/init?linktypeid=dc&fs=%E4%B8%8A%E6%B5%B7,SHH&ts=%E5%8c%97%E4%BA%AC,TJP&date=2019-11-08&flag=N,N,Y",
+        "https://kyfw.12306.cn/otn/leftTicket/init?linktypeid=dc&fs=%E4%B8%8A%E6%B5%B7,SHH&ts=%E5%8c%97%E4%BA%AC,TJP&date=2019-11-09&flag=N,N,Y"
     ]
-    # start_urls = [
-    #     "https://kyfw.12306.cn/otn/leftTicket/init?linktypeid=dc&fs=%E4%B8%8A%E6%B5%B7,SHH&ts=%E5%A4%A9%E6%B4%A5,TJP&date=2019-09-04&flag=N,N,Y",
-    #     "https://kyfw.12306.cn/otn/leftTicket/init?linktypeid=dc&fs=%E4%B8%8A%E6%B5%B7,SHH&ts=%E5%A4%A9%E6%B4%A5,TJP&date=2019-09-05&flag=N,N,Y",
-    #     "https://kyfw.12306.cn/otn/leftTicket/init?linktypeid=dc&fs=%E4%B8%8A%E6%B5%B7,SHH&ts=%E5%A4%A9%E6%B4%A5,TJP&date=2019-09-06&flag=N,N,Y",
-    #     "https://kyfw.12306.cn/otn/leftTicket/init?linktypeid=dc&fs=%E4%B8%8A%E6%B5%B7,SHH&ts=%E5%A4%A9%E6%B4%A5,TJP&date=2019-09-07&flag=N,N,Y",
-    #     "https://kyfw.12306.cn/otn/leftTicket/init?linktypeid=dc&fs=%E4%B8%8A%E6%B5%B7,SHH&ts=%E5%A4%A9%E6%B4%A5,TJP&date=2019-09-08&flag=N,N,Y",
-    #     "https://kyfw.12306.cn/otn/leftTicket/init?linktypeid=dc&fs=%E4%B8%8A%E6%B5%B7,SHH&ts=%E5%A4%A9%E6%B4%A5,TJP&date=2019-09-09&flag=N,N,Y"
-    # ]
     # 使用selenium进行初始化
     def __init__(self):
         self.browser = selenium.webdriver.Chrome()
@@ -49,8 +49,8 @@ class main_Spider(scrapy.spiders.Spider):
         # 获取url
         self.browser.get(response.url)
         x = response.url
-        Wait(self.browser, 100).until(
-            Expect.presence_of_element_located((By.XPATH, '//tr[starts-with(@id,"ticket_")][34    ]'))
+        Wait(self.browser,500).until(
+            Expect.presence_of_element_located((By.XPATH, '//div[@id="_lc_link_foot"]'))
         )
         # 取得日期
         date = self.browser.find_element_by_xpath('//li[@class="sel"]/span[2]')
