@@ -41,7 +41,7 @@ class main_Spider(scrapy.spiders.Spider):
         "https://kyfw.12306.cn/otn/leftTicket/init?linktypeid=dc&fs=%E4%B8%8A%E6%B5%B7,SHH&ts=%E5%8c%97%E4%BA%AC,TJP&date=2019-11-09&flag=N,N,Y"
     ]
     # 使用selenium进行初始化
-    def __init__(self):
+    def __init__(self):selenium
         self.browser = selenium.webdriver.Chrome()
 
     # 3.parse()
