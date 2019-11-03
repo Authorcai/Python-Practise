@@ -28,28 +28,47 @@ class Ticket12306Pipeline(object):
 
     # 存储数据
     def process_item(self, item, spider):
-        sql = "insert into `"+self.table_name+"` values( "+'"'+\
-        item['date']+'"'+","+'"'+\
-        item['train_num']+'"'+","+'"'+\
-        item['train_fromstation']+'"'+","+'"'+\
-        item['train_tostation']+'"'+","+'"'+\
-        item['train_starttime']+'"'+","+'"'+\
-        item['train_endtime']+'"'+","+'"'+\
-        item['train_spendtime']+'"'+","+'"'+\
-        item['train_seats_1']+'"'+","+'"'+\
-        item['train_seats_2']+'"'+","+'"'+\
-        item['train_seats_3']+'"'+","+'"'+\
-        item['train_seats_4']+'"'+","+'"'+\
-        item['train_seats_5']+'"'+","+'"'+\
-        item['train_seats_6']+'"'+","+'"'+\
-        item['train_seats_7']+'"'+","+'"'+\
-        item['train_seats_8']+'"'+","+'"'+\
-        item['train_seats_9']+'"'+","+'"'+\
-        item['train_seats_10']+'"'+","+'"'+\
-        item['train_seats_11']+'"'+")"
+        # sql = "insert into `"+self.table_name+"` values( "+'"'+\
+        # item['date']+'"'+","+'"'+\
+        # item['train_num']+'"'+","+'"'+\
+        # item['train_fromstation']+'"'+","+'"'+\
+        # item['train_tostation']+'"'+","+'"'+\
+        # item['train_starttime']+'"'+","+'"'+\
+        # item['train_endtime']+'"'+","+'"'+\
+        # item['train_spendtime']+'"'+","+'"'+\
+        # item['train_seats_1']+'"'+","+'"'+\
+        # item['train_seats_2']+'"'+","+'"'+\
+        # item['train_seats_3']+'"'+","+'"'+\
+        # item['train_seats_4']+'"'+","+'"'+\
+        # item['train_seats_5']+'"'+","+'"'+\
+        # item['train_seats_6']+'"'+","+'"'+\
+        # item['train_seats_7']+'"'+","+'"'+\
+        # item['train_seats_8']+'"'+","+'"'+\
+        # item['train_seats_9']+'"'+","+'"'+\
+        # item['train_seats_10']+'"'+","+'"'+\
+        # item['train_seats_11']+'"'+")"
         # print(sql)
         try:
-            self.cursor.execute(sql)
+            sql = """insert into Full_Train values (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"""
+            self.cursor.execute(sql,
+                                (item['date'],
+                                 ''.join(item['train_num']),
+                                 ''.join(item['train_fromstation']),
+                                 ''.join(item['train_tostation']),
+                                 ''.join(item['train_starttime']),
+                                 ''.join(item['train_endtime']),
+                                 ''.join(item['train_spendtime']),
+                                 ''.join(item['train_seats_1']),
+                                 ''.join(item['train_seats_3']),
+                                 ''.join(item['train_seats_4']),
+                                 ''.join(item['train_seats_5']),
+                                 ''.join(item['train_seats_6']),
+                                 ''.join(item['train_seats_7']),
+                                 ''.join(item['train_seats_8']),
+                                 ''.join(item['train_seats_9']),
+                                 ''.join(item['train_seats_10']),
+                                 ''.join(item['train_seats_11'])))
+
             self.db.commit()
         except:
             print("出现错误")

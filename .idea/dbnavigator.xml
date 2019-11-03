@@ -23,7 +23,11 @@
     <autoscroll-to-editor value="false" />
     <autoscroll-from-editor value="true" />
     <show-object-properties value="false" />
-    <loaded-nodes />
+    <loaded-nodes>
+      <connection connection-id="9fcf23d4-6e38-4a2a-b8d6-c523e7f1d145">
+        <schema name="python_spider" object-types="view, procedure, constraint, table, index, function, column, dataset trigger" />
+      </connection>
+    </loaded-nodes>
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="9fcf23d4-6e38-4a2a-b8d6-c523e7f1d145">
@@ -39,6 +43,9 @@
   <component name="DBNavigator.Project.DatabaseSessionManager">
     <connection id="9fcf23d4-6e38-4a2a-b8d6-c523e7f1d145" />
     <connection id="d6b116d9-8f35-4a46-bb33-796a08c59ac0" />
+  </component>
+  <component name="DBNavigator.Project.DatasetFilterManager">
+    <filter-actions connection-id="9fcf23d4-6e38-4a2a-b8d6-c523e7f1d145" dataset="python_spider.Full_Train" active-filter-id="" />
   </component>
   <component name="DBNavigator.Project.EditorStateManager">
     <last-used-providers />
