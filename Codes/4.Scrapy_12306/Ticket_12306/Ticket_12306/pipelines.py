@@ -25,9 +25,18 @@ class Ticket12306Pipeline(object):
         self.table_name = "Full_Train"
         self.db = pymysql.Connect(self.ip,self.user,self.passwd,self.db_name)
         self.cursor = self.db.cursor()
+    # 对数据做处理,便于存储
+    def handle_Data(self, item):
+        for key in item.keys():
+            if item[key] == '--':
+                item[key] = '0'
+            elif item[key] == '有':
+                item[key] = '20+'
+        return item
 
     # 存储数据
     def process_item(self, item, spider):
+        item = self.handle_Data(item)
         try:
             sql = "INSERT INTO Full_Train VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
             params = (item['date'],item['train_num'],item['train_fromstation'],item['train_tostation'],item['train_starttime'],item['train_endtime'],item['train_spendtime'],
