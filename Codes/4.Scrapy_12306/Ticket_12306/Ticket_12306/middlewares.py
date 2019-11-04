@@ -89,13 +89,13 @@ class Ticket12306DownloaderMiddleware(object):
         # - or return a Request object
         # - or raise IgnoreRequest: process_exception() methods of
         #   installed downloader middleware will be called
-        print(request.url)
+        # print(request.url)
         try:
             self.browser.get(request.url)
             self.wait.until(
                 Expect.presence_of_element_located((By.XPATH, '//div[@id="_lc_link_foot"]'))
             )
-            time.sleep(2)
+            time.sleep(3)
             # print(self.browser.page_source)
             return HtmlResponse(url=request.url, body=self.browser.page_source, request=request, encoding='utf-8', status=200)
         except TimeoutError:

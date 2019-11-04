@@ -23,11 +23,7 @@
     <autoscroll-to-editor value="false" />
     <autoscroll-from-editor value="true" />
     <show-object-properties value="false" />
-    <loaded-nodes>
-      <connection connection-id="9fcf23d4-6e38-4a2a-b8d6-c523e7f1d145">
-        <schema name="python_spider" object-types="view, procedure, constraint, table, index, function, column, dataset trigger" />
-      </connection>
-    </loaded-nodes>
+    <loaded-nodes />
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="9fcf23d4-6e38-4a2a-b8d6-c523e7f1d145">

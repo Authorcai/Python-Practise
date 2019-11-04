@@ -34,8 +34,8 @@ class QIdianSpider(scrapy.spiders.Spider):
         for book in books:
             id = str(i + 1)
             i = i+1
-            name = book.xpath(". //td[1]//a[2]/text()").extract()
-            link = book.xpath(". //td[1]//a[2]/@href").extract()
+            name = book.xpath(". //td[1]//a[2]/text()").extract()()
+            link = book.xpath(". //td[1]//a[2]/@href").extract()()
             new_para = book.xpath(". //td[2]//a/text()").extract()
             author = book.xpath(". //td[3]/text()").extract()
             words = book.xpath(". //td[4]/text()").extract()
