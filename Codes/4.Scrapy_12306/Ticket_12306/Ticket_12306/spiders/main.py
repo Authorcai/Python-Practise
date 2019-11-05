@@ -12,7 +12,8 @@
 # import lib
 import time
 import scrapy
-
+from urllib import parse
+import datetime
 from items import Ticket12306Item
 
 
@@ -33,35 +34,43 @@ class main_Spider(scrapy.spiders.Spider):
 
     # 定义方法用于获取start url
     def getStart(self):
-        # 新建字典用于映射车站和网址之间的关系
-        Connect = {}
+        # 新建字典用于映射车站和网址代码之间的关系
+        # 城市信息
+        contents = {}
+        # 编码 代码
+        contents['武汉'] = [parse.quote('武汉'), 'WHN']
+        contents['武昌'] = [parse.quote('武昌'), 'WCN']
+        contents['汉口'] = [parse.quote('汉口'), 'HKN']
+        contents['宜昌东'] = [parse.quote('宜昌东'), 'HAN']
+        contents['襄阳'] = [parse.quote('襄阳'), 'XFN']
 
-        return None
+        # 车站
+        fs = ['武汉', '武昌', '汉口', '宜昌东', '襄阳']
+        ts = ['武汉', '武昌', '汉口', '宜昌东', '襄阳']
+        # 日期
+        dates = []
+        time.strftime("%Y-%m-%d", time.localtime())
+        nowtime = datetime.datetime.now()
+        for i in range(5):
+            futuretime = nowtime + datetime.timedelta(days=+i)
+            futuretime = futuretime.strftime("%Y-%m-%d")
+            dates.append(futuretime)
+        # 生成url
+        start_urls = []
+
+        for fstation in fs:
+            for tstation in ts:
+                if fstation != tstation:
+                    for date in dates:
+                        url = "https://kyfw.12306.cn/otn/leftTicket/init?linktypeid=dc&fs=" + ','.join(contents[fstation]) + "&ts=" + ','.join(contents[tstation]) + "&date=" + date + "&flag=N,N,Y"
+                        start_urls.append(url)
+
+        return start_urls
+
     # 定义start_request()
     def start_requests(self):
 
-        start_urls = [
-            "https://kyfw.12306.cn/otn/leftTicket/init?linktypeid=dc&fs=%E4%B8%8A%E6%B5%B7,SHH&ts=%E5%8c%97%E4%BA%AC,TJP&date=2019-11-05&flag=N,N,Y",
-            "https://kyfw.12306.cn/otn/leftTicket/init?linktypeid=dc&fs=%E4%B8%8A%E6%B5%B7,SHH&ts=%E5%8c%97%E4%BA%AC,TJP&date=2019-11-06&flag=N,N,Y",
-            "https://kyfw.12306.cn/otn/leftTicket/init?linktypeid=dc&fs=%E4%B8%8A%E6%B5%B7,SHH&ts=%E5%A4%A9%E6%B4%A5,TJP&date=2019-11-07&flag=N,N,Y",
-            "https://kyfw.12306.cn/otn/leftTicket/init?linktypeid=dc&fs=%E4%B8%8A%E6%B5%B7,SHH&ts=%E5%8c%97%E4%BA%AC,TJP&date=2019-11-08&flag=N,N,Y",
-            "https://kyfw.12306.cn/otn/leftTicket/init?linktypeid=dc&fs=%E4%B8%8A%E6%B5%B7,SHH&ts=%E5%8c%97%E4%BA%AC,TJP&date=2019-11-09&flag=N,N,Y",
-            "https://kyfw.12306.cn/otn/leftTicket/init?linktypeid=dc&fs=%E4%B8%8A%E6%B5%B7,SHH&ts=%E5%8c%97%E4%BA%AC,TJP&date=2019-11-10&flag=N,N,Y",
-            "https://kyfw.12306.cn/otn/leftTicket/init?linktypeid=dc&fs=%E4%B8%8A%E6%B5%B7,SHH&ts=%E5%A4%A9%E6%B4%A5,TJP&date=2019-11-11&flag=N,N,Y",
-            "https://kyfw.12306.cn/otn/leftTicket/init?linktypeid=dc&fs=%E4%B8%8A%E6%B5%B7,SHH&ts=%E5%8c%97%E4%BA%AC,TJP&date=2019-11-12&flag=N,N,Y",
-            "https://kyfw.12306.cn/otn/leftTicket/init?linktypeid=dc&fs=%E4%B8%8A%E6%B5%B7,SHH&ts=%E5%8c%97%E4%BA%AC,TJP&date=2019-11-13&flag=N,N,Y",
-            "https://kyfw.12306.cn/otn/leftTicket/init?linktypeid=dc&fs=%E4%B8%8A%E6%B5%B7,SHH&ts=%E5%8c%97%E4%BA%AC,TJP&date=2019-11-14&flag=N,N,Y",
-            "https://kyfw.12306.cn/otn/leftTicket/init?linktypeid=dc&fs=%E4%B8%8A%E6%B5%B7,SHH&ts=%E5%8c%97%E4%BA%AC,TJP&date=2019-11-15&flag=N,N,Y",
-            "https://kyfw.12306.cn/otn/leftTicket/init?linktypeid=dc&fs=%E4%B8%8A%E6%B5%B7,SHH&ts=%E5%8c%97%E4%BA%AC,TJP&date=2019-11-16&flag=N,N,Y",
-            "https://kyfw.12306.cn/otn/leftTicket/init?linktypeid=dc&fs=%E4%B8%8A%E6%B5%B7,SHH&ts=%E5%A4%A9%E6%B4%A5,TJP&date=2019-11-17&flag=N,N,Y",
-            "https://kyfw.12306.cn/otn/leftTicket/init?linktypeid=dc&fs=%E4%B8%8A%E6%B5%B7,SHH&ts=%E5%8c%97%E4%BA%AC,TJP&date=2019-11-18&flag=N,N,Y",
-            "https://kyfw.12306.cn/otn/leftTicket/init?linktypeid=dc&fs=%E4%B8%8A%E6%B5%B7,SHH&ts=%E5%8c%97%E4%BA%AC,TJP&date=2019-11-19&flag=N,N,Y",
-            "https://kyfw.12306.cn/otn/leftTicket/init?linktypeid=dc&fs=%E4%B8%8A%E6%B5%B7,SHH&ts=%E5%8c%97%E4%BA%AC,TJP&date=2019-11-20&flag=N,N,Y",
-            "https://kyfw.12306.cn/otn/leftTicket/init?linktypeid=dc&fs=%E4%B8%8A%E6%B5%B7,SHH&ts=%E5%A4%A9%E6%B4%A5,TJP&date=2019-11-21&flag=N,N,Y",
-            "https://kyfw.12306.cn/otn/leftTicket/init?linktypeid=dc&fs=%E4%B8%8A%E6%B5%B7,SHH&ts=%E5%8c%97%E4%BA%AC,TJP&date=2019-11-22&flag=N,N,Y",
-            "https://kyfw.12306.cn/otn/leftTicket/init?linktypeid=dc&fs=%E4%B8%8A%E6%B5%B7,SHH&ts=%E5%8c%97%E4%BA%AC,TJP&date=2019-11-23&flag=N,N,Y",
-            "https://kyfw.12306.cn/otn/leftTicket/init?linktypeid=dc&fs=%E4%B8%8A%E6%B5%B7,SHH&ts=%E5%8c%97%E4%BA%AC,TJP&date=2019-11-24&flag=N,N,Y",
-        ]
+        start_urls = self.getStart()
         for url in start_urls:
             yield scrapy.Request(url=url, callback=self.parse)
 
