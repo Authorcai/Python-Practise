@@ -55,7 +55,9 @@ DOWNLOAD_DELAY = 10
 DOWNLOADER_MIDDLEWARES = {
    'Ticket_12306.middlewares.Ticket12306DownloaderMiddleware': 543,
 }
-
+ITEM_PIPELINES = {
+   'Ticket_12306.pipelines.Ticket12306Pipeline': 300,
+}
 # Enable or disable extensions
 # See https://docs.scrapy.org/en/latest/topics/extensions.html
 #EXTENSIONS = {
@@ -64,9 +66,7 @@ DOWNLOADER_MIDDLEWARES = {
 
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
-ITEM_PIPELINES = {
-   'Ticket_12306.pipelines.Ticket12306Pipeline': 300,
-}
+
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://docs.scrapy.org/en/latest/topics/autothrottle.html
@@ -88,3 +88,5 @@ ITEM_PIPELINES = {
 #HTTPCACHE_DIR = 'httpcache'
 #HTTPCACHE_IGNORE_HTTP_CODES = []
 #HTTPCACHE_STORAGE = 'scrapy.extensions.httpcache.FilesystemCacheStorage'
+
+

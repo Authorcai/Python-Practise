@@ -4,6 +4,7 @@
 #
 # See documentation in:
 # https://docs.scrapy.org/en/latest/topics/spider-middleware.html
+import random
 import time
 
 from scrapy import signals
@@ -95,7 +96,7 @@ class Ticket12306DownloaderMiddleware(object):
             self.wait.until(
                 Expect.presence_of_element_located((By.XPATH, '//div[@id="_lc_link_foot"]'))
             )
-            time.sleep(3)
+            time.sleep(3+random.randint(1,10))
             # print(self.browser.page_source)
             return HtmlResponse(url=request.url, body=self.browser.page_source, request=request, encoding='utf-8', status=200)
         except TimeoutError:

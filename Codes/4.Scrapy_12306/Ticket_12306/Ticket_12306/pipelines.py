@@ -15,7 +15,7 @@ class Ticket12306Pipeline(object):
         ip:连接的数据库的位置
         user:用户名
         passwd:用户密码
-        db_name:数据库名
+        db_name:s
         table_name:数据表名
         """
         self.ip = "localhost"
